@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinica Virtual | Home</title>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a Clinica Virtual</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/ver-pacientes}">Pacientes</a></li>
+                <li><a th:href="@{/ver-odontologos}">Odontólogos</a></li>
+                <li><a th:href="@{/ver-turnos}">Turnos</a></li>
+            </ul>
+        </nav>
+        <form th:action="@{/logout}" method="POST">
+            <input type="submit" value="Cerrar sesión" />
+        </form>
+    </header>
+    <body>
+        <h2>Lorem ipsum</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, sit nulla? Similique dignissimos molestiae a ut debitis laudantium illum ad! Accusantium quibusdam reprehenderit sunt sint culpa nam omnis consequatur incidunt?</p>
+    </body>
+    <footer>
+       <p>Copyright &copy; 2021 - Gianna Russo</p> 
+    </footer>
+</body>
+</html>
