@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinica Virtual | Turnos</title>
+</head>
+<body>
+    <header>
+        <h1>Consulta sobre turnos</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/lista-pacientes}">Pacientes</a></li>
+                <li><a th:href="@{/lista-odontologos}">Odontólogos</a></li>
+                <li><a th:href="@{/lista-turnos}">Turnos</a></li>
+            </ul>
+        </nav>
+        <form th:action="@{/logout}" method="POST">
+            <input type="submit" value="Cerrar sesión" />
+        </form>
+    </header>
+    <main>
+        <section>
+            <h2>Sacar turno</h2>
+            <form id="agregar">
+                <label for="paciente">
+                    <span>Paciente</span>
+                    <input type="number" name="paciente" id="paciente" />
+                </label>
+                <label for="odontologo">
+                    <span>Odontólogo</span>
+                    <input type="number" name="odontologo" id="odontologo" />
+                </label>
+                <label for="fecha">
+                    <span>Fecha</span>
+                    <input type="date" name="fecha" id="fecha" />
+                </label>
+                <input type="submit" value="Agregar" />
+            </form>
+            <div id="response" style="display:none; margin-top:10px">
+            </div>
+        </section>
+        <section>
+            <h3>Lista de turnos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Paciente</th>
+                        <th>Odontólogo</th>
+                        <th>Fecha</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="info"></tbody>
+            </table>
+        </section>
+        <section>
+            <h3>Modificar turno</h3>
+            <form id="modificar">
+                <label for="paciente_modificar">
+                    <span>Paciente</span>
+                    <input type="number" name="paciente" id="paciente_modificar" />
+                </label>
+                <label for="odontologo_modificar">
+                    <span>Odontólogo</span>
+                    <input type="number" name="odontologo" id="odontologo_modificar" />
+                </label>
+                <label for="fecha_modificar">
+                    <span>Fecha</span>
+                    <input type="date" name="fecha" id="fecha_modificar" />
+                </label>
+                <input type="submit" value="Modificar" />
+            </form>
+        </section>
+    </main>
+    <footer>
+       <p>Copyright &copy; 2021 - Gianna Russo</p> 
+    </footer>
+    <script src="/js/turnos.js"></script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
     let tabla = document.querySelector('#info');
     let obtener = function(){
-        const url = '/odontologos';
+        const url = '/turnos';
         const settings = {
             method: 'GET'
         }
@@ -13,9 +13,9 @@ window.addEventListener('load', function () {
                 tabla.innerHTML +=
                 `<tr id=${element.id}>
                     <td>${element.id}</td>
-                    <td>${element.matricula}</td>
-                    <td>${element.nombre}</td>
-                    <td>${element.apellido}</td>
+                    <td>${element.paciente.id}</td>
+                    <td>${element.odontologo.id}</td>
+                    <td>${element.fecha}</td>
                     <td class="editar"><button>EDITAR</button></td>
                     <td class="eliminar"><button>ELIMINAR</button></td>
                 </tr>`;
@@ -29,13 +29,16 @@ window.addEventListener('load', function () {
     const formulario = document.querySelector('#agregar');
     formulario.addEventListener('submit', function (event) {
         event.preventDefault();
+        const paciente = { id: document.querySelector('#paciente').value };
+        const odontologo = { id: document.querySelector('#odontologo').value };
+        console.log(paciente);
         const formData = {
-            nombre: document.querySelector('#nombre').value,
-            apellido: document.querySelector('#apellido').value,
-            matricula: document.querySelector('#matricula').value,
+            paciente: paciente,
+            odontologo: odontologo,
+            fecha: document.querySelector('#fecha').value,
         };
 
-        const url = '/odontologos';
+        const url = '/turnos';
         const settings = {
             method: 'POST',
             headers: {
@@ -47,6 +50,7 @@ window.addEventListener('load', function () {
         fetch(url, settings)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             document.querySelector('#response').style.display = "block";
             resetUploadForm();
             obtener();
@@ -58,16 +62,16 @@ window.addEventListener('load', function () {
     } );
 
     function resetUploadForm( ) {
-        document.querySelector('#nombre').value = "";
-        document.querySelector('#apellido').value = "";
-        document.querySelector('#matricula').value = "";
+        document.querySelector('#paciente').value = "";
+        document.querySelector('#odontologo').value = "";
+        document.querySelector('#fecha').value = "";
     }
 
     let eliminar = function() {
         let btnEliminar = document.querySelector('.eliminar');
         btnEliminar.addEventListener("click", function() {
             let id = this.parentNode.id;
-            const url = '/odontologos/eliminar/'+ id;
+            const url = '/turnos/eliminar/'+ id;
             const settings = {
                 method: 'DELETE'
             }
@@ -90,12 +94,12 @@ window.addEventListener('load', function () {
                 console.log(id);
                 const formData = {
                     id: id,
-                    nombre: document.querySelector('#nombre_modificar').value,
-                    apellido: document.querySelector('#apellido_modificar').value,
-                    matricula: document.querySelector('#matricula_modificar').value,
+                    paciente: document.querySelector('#paciente_modificar').value,
+                    odontologo: document.querySelector('#odontologo_modificar').value,
+                    fecha: document.querySelector('#fecha_modificar').value,
                 };
                 
-                const url = '/odontologos/actualizar/';
+                const url = '/turnos/actualizar/';
                 const settings = {
                     method: 'PUT',
                     headers: {

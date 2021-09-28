@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
     let tabla = document.querySelector('#info');
     let obtener = function(){
-        const url = '/odontologos';
+        const url = '/pacientes';
         const settings = {
             method: 'GET'
         }
@@ -13,9 +13,11 @@ window.addEventListener('load', function () {
                 tabla.innerHTML +=
                 `<tr id=${element.id}>
                     <td>${element.id}</td>
-                    <td>${element.matricula}</td>
                     <td>${element.nombre}</td>
                     <td>${element.apellido}</td>
+                    <td>${element.dni}</td>
+                    <td>${element.domicilio}</td>
+                    <td>${element.fechaDeAlta}</td>
                     <td class="editar"><button>EDITAR</button></td>
                     <td class="eliminar"><button>ELIMINAR</button></td>
                 </tr>`;
@@ -32,10 +34,12 @@ window.addEventListener('load', function () {
         const formData = {
             nombre: document.querySelector('#nombre').value,
             apellido: document.querySelector('#apellido').value,
-            matricula: document.querySelector('#matricula').value,
+            dni: document.querySelector('#dni').value,
+            domicilio: document.querySelector('#domicilio').value,
+            fechaDeAlta: document.querySelector('#fechaDeAlta').value,
         };
 
-        const url = '/odontologos';
+        const url = '/pacientes';
         const settings = {
             method: 'POST',
             headers: {
@@ -60,14 +64,16 @@ window.addEventListener('load', function () {
     function resetUploadForm( ) {
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
-        document.querySelector('#matricula').value = "";
+        document.querySelector('#dni').value = "";
+        document.querySelector('#domicilio').value = "";
+        document.querySelector('#fechaDeAlta').value = "";
     }
 
     let eliminar = function() {
         let btnEliminar = document.querySelector('.eliminar');
         btnEliminar.addEventListener("click", function() {
             let id = this.parentNode.id;
-            const url = '/odontologos/eliminar/'+ id;
+            const url = '/pacientes/eliminar/'+ id;
             const settings = {
                 method: 'DELETE'
             }
@@ -92,10 +98,12 @@ window.addEventListener('load', function () {
                     id: id,
                     nombre: document.querySelector('#nombre_modificar').value,
                     apellido: document.querySelector('#apellido_modificar').value,
-                    matricula: document.querySelector('#matricula_modificar').value,
+                    dni: document.querySelector('#dni_modificar').value,
+                    domicilio: document.querySelector('#domicilio_modificar').value,
+                    fechaDeAlta: document.querySelector('#fechaDeAlta_modificar').value,
                 };
                 
-                const url = '/odontologos/actualizar/';
+                const url = '/pacientes/actualizar/';
                 const settings = {
                     method: 'PUT',
                     headers: {

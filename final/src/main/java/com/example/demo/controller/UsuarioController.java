@@ -11,8 +11,18 @@ public class UsuarioController {
         return "index";
     }
 
+    @GetMapping("/lista-pacientes")
+    public String pacientes() {
+        return "pacientes";
+    }
+
     @GetMapping("/lista-odontologos")
     public String odontologos() {
         return "odontologos";
+    }
+
+    @GetMapping("/lista-turnos")
+    public String turnos() {
+        return "turnos";
     }
 }
