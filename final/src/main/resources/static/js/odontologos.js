@@ -77,16 +77,19 @@ window.addEventListener('load', function () {
         } )
     }
 
-    let editar = function() {
-        let modificar = document.querySelector('#modificar');
+    let modificar = document.querySelector('#modificar');
         modificar.style.display = "none";
+
+    let editar = function() {
         let btnModificar = document.querySelector('.editar');
         btnModificar.addEventListener("click", function() {
+            let id = this.parentNode.id;
             modificar.style.display = "block";
             modificar.addEventListener('submit', function (event) {
                 event.preventDefault();
+                console.log(id);
                 const formData = {
-                    id: document.querySelector('#id_modificar').value,
+                    id: id,
                     nombre: document.querySelector('#nombre_modificar').value,
                     apellido: document.querySelector('#apellido_modificar').value,
                     matricula: document.querySelector('#matricula_modificar').value,
@@ -105,6 +108,7 @@ window.addEventListener('load', function () {
                 .then(data => {
                     obtener();
                 })
+                modificar.style.display = "none";
             } )
         } )
     }
