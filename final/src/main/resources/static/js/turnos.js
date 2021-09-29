@@ -33,7 +33,7 @@ window.addEventListener('load', function () {
             const formData = {
                 paciente: { id: document.querySelector('#paciente').value },
                 odontologo: { id: document.querySelector('#odontologo').value },
-                fecha: document.querySelector('#fecha').value,
+                fecha: document.querySelector('#fecha').value + " " + document.querySelector('#hora').value,
             };
 
             const url = '/turnos';
@@ -59,6 +59,7 @@ window.addEventListener('load', function () {
         document.querySelector('#paciente').value = "";
         document.querySelector('#odontologo').value = "";
         document.querySelector('#fecha').value = "";
+        document.querySelector('#hora').value = "";
     }
 
     let confirmacionEliminar = function( ) {
@@ -108,7 +109,7 @@ window.addEventListener('load', function () {
                 id: document.querySelector('#id_modificar').value,
                 paciente: { id: document.querySelector('#paciente_modificar').value },
                 odontologo: { id: document.querySelector('#odontologo_modificar').value },
-                fecha: document.querySelector('#fecha_modificar').value,
+                fecha: document.querySelector('#fecha_modificar').value + " " + document.querySelector('#hora_modificar').value
             };
             
             const url = '/turnos/actualizar/';

@@ -1,9 +1,10 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Table(name = "Turnos")
@@ -21,5 +22,6 @@ public class Turno {
     @JoinColumn(name = "odontologo_id", nullable = false)
     private Odontologo odontologo;
 
-    private LocalDate fecha;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime fecha;
 }

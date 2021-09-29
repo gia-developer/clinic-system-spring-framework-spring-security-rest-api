@@ -1,13 +1,15 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 public class TurnoDTO {
     private Long id;
-    private LocalDate fecha;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime fecha;
     private Paciente paciente;
     private Odontologo odontologo;
 }
