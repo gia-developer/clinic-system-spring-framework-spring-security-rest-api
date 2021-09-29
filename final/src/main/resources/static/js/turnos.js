@@ -14,7 +14,9 @@ window.addEventListener('load', function () {
                 `<tr id=${element.id}>
                     <td class="id">${element.id}</td>
                     <td class="paciente">${element.paciente.id}</td>
+                    <td>${element.paciente.nombre}</td>
                     <td class="odontologo">${element.odontologo.id}</td>
+                    <td>${element.odontologo.nombre}</td>
                     <td class="fecha">${element.fecha}</td>
                     <td class="editar"><button>EDITAR</button></td>
                     <td class="eliminar"><button>ELIMINAR</button></td>
