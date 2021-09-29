@@ -12,54 +12,52 @@ window.addEventListener('load', function () {
             data.forEach(element => {
                 tabla.innerHTML +=
                 `<tr id=${element.id}>
-                    <td>${element.id}</td>
-                    <td>${element.nombre}</td>
-                    <td>${element.apellido}</td>
-                    <td>${element.dni}</td>
-                    <td>${element.domicilio}</td>
-                    <td>${element.fechaDeAlta}</td>
+                    <td class="id">${element.id}</td>
+                    <td class="nombre">${element.nombre}</td>
+                    <td class="apellido">${element.apellido}</td>
+                    <td class="dni">${element.dni}</td>
+                    <td class="domicilio">${element.domicilio}</td>
+                    <td class="fechaDeAlta">${element.fechaDeAlta}</td>
                     <td class="editar"><button>EDITAR</button></td>
                     <td class="eliminar"><button>ELIMINAR</button></td>
                 </tr>`;
             } );
-            eliminar();
-            editar();
+            confirmacionEliminar( );
+            editar( );
         } );
     }
     obtener();
 
-    const formulario = document.querySelector('#agregar');
-    formulario.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const formData = {
-            nombre: document.querySelector('#nombre').value,
-            apellido: document.querySelector('#apellido').value,
-            dni: document.querySelector('#dni').value,
-            domicilio: document.querySelector('#domicilio').value,
-            fechaDeAlta: document.querySelector('#fechaDeAlta').value,
-        };
+    let agregar = function( ) {
+        const formulario = document.querySelector('#agregar');
+        formulario.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = {
+                nombre: document.querySelector('#nombre').value,
+                apellido: document.querySelector('#apellido').value,
+                dni: document.querySelector('#dni').value,
+                domicilio: document.querySelector('#domicilio').value,
+                fechaDeAlta: document.querySelector('#fechaDeAlta').value,
+            };
 
-        const url = '/pacientes';
-        const settings = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        }
+            const url = '/pacientes';
+            const settings = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            }
 
-        fetch(url, settings)
-        .then(response => response.json())
-        .then(data => {
-            document.querySelector('#response').style.display = "block";
-            resetUploadForm();
-            obtener();
-        } )
-        .catch(error => {
-            document.querySelector('#response').style.display = "block";
-            resetUploadForm();
-        } )
-    } );
+            fetch(url, settings)
+            .then(response => {
+                response.json();
+                obtener();
+                resetUploadForm();
+            })
+        } );
+    }
+    agregar();
 
     function resetUploadForm( ) {
         document.querySelector('#nombre').value = "";
@@ -69,55 +67,74 @@ window.addEventListener('load', function () {
         document.querySelector('#fechaDeAlta').value = "";
     }
 
-    let eliminar = function() {
-        let btnEliminar = document.querySelector('.eliminar');
-        btnEliminar.addEventListener("click", function() {
-            let id = this.parentNode.id;
-            const url = '/pacientes/eliminar/'+ id;
-            const settings = {
-                method: 'DELETE'
-            }
-            fetch(url,settings)
-            .then(response => response.json())
-            this.parentNode.remove();
+    let confirmacionEliminar = function( ) {
+        let btnEliminar = document.querySelectorAll('.eliminar');
+        for(let i = 0; i < btnEliminar.length; i++) {
+            btnEliminar[i].addEventListener("click", function() {
+                let id = this.parentNode.id;
+                if(confirm("Eliminar?")) {  
+                    eliminar(id);
+                }
+            } );
+        }
+    }
+
+    let eliminar = function(id) {
+        const url = '/pacientes/eliminar/'+ id;
+        const settings = {
+            method: 'DELETE'
+        }
+        fetch(url,settings)
+        .then(response => {
+            response.json();
+            obtener();
         } )
     }
 
     let modificar = document.querySelector('#modificar');
-        modificar.style.display = "none";
+    modificar.style.display = "none";
 
-    let editar = function() {
-        let btnModificar = document.querySelector('.editar');
-        btnModificar.addEventListener("click", function() {
-            let id = this.parentNode.id;
-            modificar.style.display = "block";
-            modificar.addEventListener('submit', function (event) {
-                event.preventDefault();
-                console.log(id);
-                const formData = {
-                    id: id,
-                    nombre: document.querySelector('#nombre_modificar').value,
-                    apellido: document.querySelector('#apellido_modificar').value,
-                    dni: document.querySelector('#dni_modificar').value,
-                    domicilio: document.querySelector('#domicilio_modificar').value,
-                    fechaDeAlta: document.querySelector('#fechaDeAlta_modificar').value,
-                };
-                
-                const url = '/pacientes/actualizar/';
-                const settings = {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                }
-                fetch(url,settings)
-                .then(response => response.json())
-                .then(data => {
-                    obtener();
-                })
-                modificar.style.display = "none";
+    let editar = function( ) {
+        let btnModificar = document.querySelectorAll('.editar');
+        for(let i = 0; i < btnModificar.length; i++) {
+            btnModificar[i].addEventListener("click", function() {
+                modificar.style.display = "block";
+                document.querySelector('#id_modificar').value = this.parentNode.querySelector('.id').innerHTML;
+                document.querySelector('#nombre_modificar').value = this.parentNode.querySelector('.nombre').innerHTML;
+                document.querySelector('#apellido_modificar').value = this.parentNode.querySelector('.apellido').innerHTML;
+                document.querySelector('#dni_modificar').value = this.parentNode.querySelector('.dni').innerHTML;
+                document.querySelector('#domicilio_modificar').value = this.parentNode.querySelector('.domicilio').innerHTML;
+                document.querySelector('#fechaDeAlta_modificar').value = this.parentNode.querySelector('.fechaDeAlta').innerHTML;
             } )
+        }
+
+        modificar.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = {
+                id: document.querySelector('#id_modificar').value,
+                nombre: document.querySelector('#nombre_modificar').value,
+                apellido: document.querySelector('#apellido_modificar').value,
+                dni: document.querySelector('#dni_modificar').value,
+                domicilio: document.querySelector('#domicilio_modificar').value,
+                fechaDeAlta: document.querySelector('#fechaDeAlta_modificar').value,
+            };
+            
+            const url = '/pacientes/actualizar/';
+            const settings = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            }
+            fetch(url,settings)
+            .then(response => { 
+                response.json();
+                obtener();
+                resetUploadForm();
+            } )
+            modificar.style.display = "none";
         } )
     }
 } );
