@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -24,7 +26,9 @@ public class PacienteServiceImpl implements IModelService<PacienteDTO> {
     @Override
     public void crear(PacienteDTO pacienteDTO) {
         Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
-        pacienteRepository.save(paciente);
+        if( paciente.getFechaDeAlta().isBefore(LocalDate.now()) || paciente.getFechaDeAlta().equals(LocalDate.now()) ) {
+            pacienteRepository.save(paciente);
+        }
     }
 
     @Override

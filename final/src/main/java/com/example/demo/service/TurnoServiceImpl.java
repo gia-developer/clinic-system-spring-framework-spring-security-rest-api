@@ -1,19 +1,23 @@
 package com.example.demo.service;
 
+import com.example.demo.GlobalExceptionHandler;
 import com.example.demo.model.Odontologo;
 import com.example.demo.model.OdontologoDTO;
 import com.example.demo.model.Turno;
 import com.example.demo.model.TurnoDTO;
 import com.example.demo.repository.ITurnoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
 public class TurnoServiceImpl implements IModelService<TurnoDTO> {
+    private static final Logger logger = Logger.getLogger(GlobalExceptionHandler.class);
     private ITurnoRepository turnoRepository;
 
     @Autowired
@@ -27,7 +31,7 @@ public class TurnoServiceImpl implements IModelService<TurnoDTO> {
     @Override
     public void crear(TurnoDTO turnoDTO) {
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
-        turnoRepository.save(turno);
+        if( turno.getFecha().isAfter(LocalDateTime.now()) ) turnoRepository.save(turno);
     }
 
     @Override
