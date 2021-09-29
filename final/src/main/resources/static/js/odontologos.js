@@ -100,12 +100,14 @@ window.addEventListener('load', function () {
             } )
         }
 
-        modificar.addEventListener('submit', function (event) {
+        let formModificar = document.querySelector('#modificar form');
+        formModificar.addEventListener('submit', function (event) {
             event.preventDefault();
 
             const formData = {
                 id: document.querySelector('#id_modificar').value,
                 nombre: document.querySelector('#nombre_modificar').value,
+                apellido: document.querySelector('#apellido_modificar').value,
                 matricula: document.querySelector('#matricula_modificar').value,
             };
             
@@ -122,8 +124,8 @@ window.addEventListener('load', function () {
                 response.json();
                 obtener();
                 resetUploadForm();
+                modificar.style.display = "none";
             } )
-            modificar.style.display = "none";
         } )
     }
 } );
