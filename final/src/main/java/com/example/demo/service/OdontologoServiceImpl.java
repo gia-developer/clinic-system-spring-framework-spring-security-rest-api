@@ -13,8 +13,12 @@ import java.util.*;
 
 @Service
 public class OdontologoServiceImpl implements IModelService<OdontologoDTO> {
-    @Autowired
     IOdontologoRepository odontologoRepository;
+
+    @Autowired
+    public OdontologoServiceImpl(IOdontologoRepository odontologoRepository) {
+        this.odontologoRepository = odontologoRepository;
+    }
 
     @Autowired
     ObjectMapper mapper;

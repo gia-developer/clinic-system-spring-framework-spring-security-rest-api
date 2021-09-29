@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clinica Virtual | Buscar odontólogos</title>
+</head>
+<body>
+    <header>
+        <h1>Consulta sobre odontólogos</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="lista-pacientes.html">Pacientes</a>
+                    <ul>
+                        <li>
+                            <a href="buscar-pacientes.html">Buscar pacientes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="lista-odontologos.html">Odontólogos</a>
+                    <ul>
+                        <li>
+                            <a href="buscar-odontologos.html">Buscar odontólogos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="lista-turnos.html">Turnos</a>
+                    <ul>
+                        <li>
+                            <a href="buscar-turnos.html">Buscar turnos</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <form th:action="@{/logout}" method="POST">
+            <input type="submit" value="Cerrar sesión" />
+        </form>
+    </header>
+    <main>
+        <section>
+            <h2>Buscar un odontólogo</h2>
+            <form id="buscarForm">
+                <label for="buscar">
+                    <span>Buscar</span>
+                    <input type="text" name="buscar" id="buscar" />
+                </label>
+                <input type="submit" value="Agregar" />
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Matrícula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                    </tr>
+                </thead>
+                <tbody id="info"></tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+       <p>Copyright &copy; 2021 - Gianna Russo</p> 
+    </footer>
+    <script src="/js/buscar-odontologos.js"></script>
+</body>
+</html>

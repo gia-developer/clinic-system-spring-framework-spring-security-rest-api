@@ -11,18 +11,33 @@ public class UsuarioController {
         return "index";
     }
 
-    @GetMapping("/lista-pacientes")
+    @GetMapping("/lista-pacientes.html")
     public String pacientes() {
         return "pacientes";
     }
 
-    @GetMapping("/lista-odontologos")
+    @GetMapping("/buscar-pacientes.html")
+    public String buscarPacientes() {
+        return "buscar-pacientes";
+    }
+
+    @GetMapping("/lista-odontologos.html")
     public String odontologos() {
         return "odontologos";
     }
 
-    @GetMapping("/lista-turnos")
+    @GetMapping("/buscar-odontologos.html")
+    public String buscarOdontologos() {
+        return "buscar-odontologos";
+    }
+
+    @GetMapping("/lista-turnos.html")
     public String turnos() {
         return "turnos";
+    }
+
+    @GetMapping("/buscar-turnos.html")
+    public String buscarTurnos() {
+        return "buscar-turnos";
     }
 }

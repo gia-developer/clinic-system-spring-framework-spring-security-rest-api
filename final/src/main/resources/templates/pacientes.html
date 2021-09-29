@@ -11,9 +11,30 @@
         <h1>Consulta sobre pacientes</h1>
         <nav>
             <ul>
-                <li><a th:href="@{/lista-pacientes}">Pacientes</a></li>
-                <li><a th:href="@{/lista-odontologos}">Odontólogos</a></li>
-                <li><a th:href="@{/lista-turnos}">Turnos</a></li>
+                <li>
+                    <a href="lista-pacientes.html">Pacientes</a>
+                    <ul>
+                        <li>
+                            <a href="buscar-pacientes.html">Buscar pacientes</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="lista-odontologos.html">Odontólogos</a>
+                    <ul>
+                        <li>
+                            <a href="buscar-odontologos.html">Buscar odontólogos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="lista-turnos.html">Turnos</a>
+                    <ul>
+                        <li>
+                            <a href="buscar-turnos.html">Buscar turnos</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <form th:action="@{/logout}" method="POST">
@@ -46,8 +67,6 @@
                 </label>
                 <input type="submit" value="Agregar" />
             </form>
-            <div id="response" style="display:none; margin-top:10px">
-            </div>
         </section>
         <section>
             <h3>Lista de pacientes</h3>
