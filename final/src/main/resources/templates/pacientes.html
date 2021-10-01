@@ -5,43 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clinica Virtual | Pacientes</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
     <header>
         <h1>Consulta sobre pacientes</h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="pacientes.html">Pacientes</a>
-                    <ul>
-                        <li>
-                            <a href="buscar-pacientes.html">Buscar pacientes</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="odontologos.html">Odontólogos</a>
-                    <ul>
-                        <li>
-                            <a href="buscar-odontologos.html">Buscar odontólogos</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="turnos.html">Turnos</a>
-                    <ul>
-                        <li>
-                            <a href="buscar-turnos.html">Buscar turnos</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <form th:action="@{/logout}" method="POST">
-            <input type="submit" value="Cerrar sesión" />
-        </form>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li>
+                        <a href="pacientes.html">Pacientes</a>
+                        <ul>
+                            <li>
+                                <a href="buscar-pacientes.html">Buscar pacientes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="odontologos.html">Odontólogos</a>
+                        <ul>
+                            <li>
+                                <a href="buscar-odontologos.html">Buscar odontólogos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="turnos.html">Turnos</a>
+                        <ul>
+                            <li>
+                                <a href="buscar-turnos.html">Buscar turnos</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <form th:action="@{/logout}" method="POST">
+                <input type="submit" class="salir" value="Cerrar sesión" />
+            </form>
+        </div>
     </header>
-    <main>
+    <main class="alta">
         <section>
             <h2>Dar de alta a un paciente</h2>
             <form id="agregar">
@@ -65,7 +69,7 @@
                     <span>Fecha de alta</span>
                     <input type="date" name="fechaDeAlta" id="fechaDeAlta" />
                 </label>
-                <input type="submit" value="Agregar" />
+                <input type="submit" class="enviar" value="Agregar" />
             </form>
         </section>
         <section>
@@ -79,8 +83,8 @@
                         <th>DNI</th>
                         <th>Domicilio</th>
                         <th>Fecha de alta</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="info"></tbody>
@@ -113,7 +117,7 @@
                     <span>Fecha de alta</span>
                     <input type="date" name="fechaDeAlta" id="fechaDeAlta_modificar" />
                 </label>
-                <input type="submit" value="Modificar" />
+                <input type="submit" class="enviar" value="Modificar" />
             </form>
         </section>
     </main>

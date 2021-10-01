@@ -1,7 +1,8 @@
 window.addEventListener('load', function () {
-    let tabla = document.querySelector('#info');
     let tablaSemanal = document.querySelector('#listado-semanal');
-        tablaSemanal.style.display = "none";
+        tablaSemanal.classList.add("none");
+
+    let tabla = document.querySelector('#info');
     let obtener = function(){
         const url = '/turnos';
         const settings = {
@@ -49,8 +50,6 @@ window.addEventListener('load', function () {
                     <td class="odontologo">${element.odontologo.id}</td>
                     <td>${element.odontologo.nombre}</td>
                     <td class="fecha">${element.fecha}</td>
-                    <td class="editar"><button>EDITAR</button></td>
-                    <td class="eliminar"><button>ELIMINAR</button></td>
                 </tr>`;
             } );
             confirmacionEliminar( );
@@ -60,10 +59,17 @@ window.addEventListener('load', function () {
 
     let listadoTurnos = document.querySelector('#listado-turnos');
     let btnSemana = document.querySelector('#btn-semana');
-    btnSemana.addEventListener('click', function (event) {
+    btnSemana.addEventListener('click', function () {
         obtenerSemanal();
-        listadoTurnos.style.display = "none";
-        tablaSemanal.style.display = "block";
+        listadoTurnos.classList.add("none");
+        tablaSemanal.classList.remove("none");
+    } );
+
+    let btnTodos = document.querySelector('#btn-todos');
+    btnTodos.addEventListener('click', function () {
+        obtener();
+        listadoTurnos.classList.remove("none");
+        tablaSemanal.classList.add("none");
     } );
 
     let agregar = function( ) {

@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;1,500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body, a {
+    color: #2E2C2F;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #0180BD;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding: 15px 0;
+}
+
+h1::before {
+    content: "";
+    background: url("icons/logo.png") no-repeat center center;
+    background-size: contain;
+    height: 40px;
+    width: 40px;
+    display: block;
+    margin-right: 5px;
+}
+
+p {
+    line-height: 150%;
+}
+
+button, .enviar {
+    background: #0180BD;
+    padding: 12px 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.enviar {
+    margin-left: auto;
+}
+
+button:hover, .enviar:hover {
+    background: #01A6D9;
+}
+
+.salir {
+    background: url("icons/exit.png") no-repeat;
+    background-size: contain;
+    border: none;
+    width: 32px;
+    height: 32px;
+    font-size: 0;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.none {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: calc(50% - 10px);
+}
+
+input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+/* NAV */
+header {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 0 5%;
+    box-shadow: 0px 1px 9px 1px rgba(194,194,194,0.79);
+    -webkit-box-shadow: 0px 1px 9px 1px rgba(194,194,194,0.79);
+    -moz-box-shadow: 0px 1px 9px 1px rgba(194,194,194,0.79);
+    position: relative;
+}
+
+header div, header nav ul {
+    display: flex;
+}
+
+header div {
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+}
+
+header div form {
+    width: 15%;
+}
+
+header nav {
+    width: 85%;
+}
+
+header nav > ul {
+    justify-content: space-between;
+}
+
+header nav > ul li a {
+    padding: 26px 15px;
+}
+
+header nav ul ul {
+    display: none;
+}
+
+header nav ul li:hover ul {
+    display: flex;
+}
+
+header nav ul ul li a {
+    position: absolute;
+    bottom: -49px;
+    background: white;
+    box-shadow: 0px 1px 9px 1px rgba(194,194,194,0.79);
+    -webkit-box-shadow: 0px 1px 9px 1px rgba(194,194,194,0.79);
+    -moz-box-shadow: 0px 1px 9px 1px rgba(194,194,194,0.79);
+    padding: 15px;
+}
+
+/* MAIN */
+main#bienvenido {
+    padding: 50px 5%;
+    height: calc(100vh - 117px);
+    background: url("../img/inicio.jpg") no-repeat center center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#bienvenido section {
+    width: 40%;
+    background: rgba(255, 255, 255, .6);
+    padding: 40px;
+}
+
+#bienvenido p {
+    margin: 20px 0;
+}
+
+/* ALTA */
+.alta {
+    padding: 50px 5%;
+    min-height: calc(100vh - 111px);
+}
+
+.alta h2, .alta h3 {
+    margin-bottom: 20px;
+}
+
+/* TABLE */
+table {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+}
+
+td.fechaAlta, td.dni {
+    width: 150px;
+}
+
+td.editar, td.eliminar {
+    width: 80px;
+}
+
+td.editar button, td.eliminar button {
+    height: 24px;
+    width: 24px;
+    display: block;
+    margin: auto;
+    font-size: 0;
+}
+
+td.editar button {
+    background: url("icons/edit.png") no-repeat center center;
+    background-size: contain;
+}
+
+td.eliminar button {
+    background: url("icons/delete.png") no-repeat center center;
+    background-size: contain;
+}
+
+/* FILTRAR */
+.filtro-semana div {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    align-items: center;
+}
+
+.filtro-semana div h3 {
+    margin-bottom: 0;
+}
+
+#listado-semanal {
+    margin-top: 20px;
+}
+
+/* FOOTER */
+footer {
+    padding: 10px 5%;
+    background: #F5F5F5;
+    font-size: 14px;
+}
