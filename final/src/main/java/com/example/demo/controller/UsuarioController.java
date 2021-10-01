@@ -11,7 +11,7 @@ public class UsuarioController {
         return "index";
     }
 
-    @GetMapping("/lista-pacientes.html")
+    @GetMapping("/pacientes.html")
     public String pacientes() {
         return "pacientes";
     }
@@ -21,7 +21,7 @@ public class UsuarioController {
         return "buscar-pacientes";
     }
 
-    @GetMapping("/lista-odontologos.html")
+    @GetMapping("/odontologos.html")
     public String odontologos() {
         return "odontologos";
     }
@@ -31,7 +31,7 @@ public class UsuarioController {
         return "buscar-odontologos";
     }
 
-    @GetMapping("/lista-turnos.html")
+    @GetMapping("/turnos.html")
     public String turnos() {
         return "turnos";
     }

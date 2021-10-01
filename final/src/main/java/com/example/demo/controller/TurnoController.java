@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/turnos")
@@ -31,6 +32,12 @@ public class TurnoController {
     @GetMapping
     public Collection<TurnoDTO> verTurnos() {
         return turnoService.buscarTodos();
+    }
+
+    //READ
+    @GetMapping("/semanal")
+    public Collection<TurnoDTO> turnosSemanales() {
+        return turnoService.filtrar();
     }
 
     //READ

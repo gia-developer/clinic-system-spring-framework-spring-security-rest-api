@@ -12,7 +12,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="lista-pacientes.html">Pacientes</a>
+                    <a href="pacientes.html">Pacientes</a>
                     <ul>
                         <li>
                             <a href="buscar-pacientes.html">Buscar pacientes</a>
@@ -20,7 +20,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="lista-odontologos.html">Odontólogos</a>
+                    <a href="odontologos.html">Odontólogos</a>
                     <ul>
                         <li>
                             <a href="buscar-odontologos.html">Buscar odontólogos</a>
@@ -28,7 +28,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="lista-turnos.html">Turnos</a>
+                    <a href="turnos.html">Turnos</a>
                     <ul>
                         <li>
                             <a href="buscar-turnos.html">Buscar turnos</a>
@@ -64,8 +64,9 @@
                 <input type="submit" value="Agregar" />
             </form>
         </section>
-        <section>
+        <section id="listado-turnos">
             <h3>Lista de turnos</h3>
+            <button id="btn-semana">Filtrar</button>
             <table>
                 <thead>
                     <tr>
@@ -80,6 +81,24 @@
                     </tr>
                 </thead>
                 <tbody id="info"></tbody>
+            </table>
+        </section>
+        <section id="listado-semanal">
+            <h3>Lista de turnos semanales</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ID paciente</th>
+                    <th>Nombre del paciente</th>
+                    <th>ID odontólogo</th>
+                    <th>Nombre del odontólogo</th>
+                    <th>Fecha y hora</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                </thead>
+                <tbody id="infoSemanal"></tbody>
             </table>
         </section>
         <section id="modificar">

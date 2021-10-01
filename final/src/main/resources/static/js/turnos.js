@@ -1,5 +1,7 @@
 window.addEventListener('load', function () {
     let tabla = document.querySelector('#info');
+    let tablaSemanal = document.querySelector('#listado-semanal');
+        tablaSemanal.style.display = "none";
     let obtener = function(){
         const url = '/turnos';
         const settings = {
@@ -27,6 +29,42 @@ window.addEventListener('load', function () {
         } );
     }
     obtener();
+
+    let infoSemanal = document.querySelector('#infoSemanal');
+    let obtenerSemanal = function(){
+        const url = '/turnos/semanal';
+        const settings = {
+            method: 'GET'
+        }
+        fetch(url,settings)
+        .then(response => response.json())
+        .then(data => {
+            infoSemanal.innerHTML = "";
+            data.forEach(element => {
+                infoSemanal.innerHTML +=
+                `<tr id=${element.id}>
+                    <td class="id">${element.id}</td>
+                    <td class="paciente">${element.paciente.id}</td>
+                    <td>${element.paciente.nombre}</td>
+                    <td class="odontologo">${element.odontologo.id}</td>
+                    <td>${element.odontologo.nombre}</td>
+                    <td class="fecha">${element.fecha}</td>
+                    <td class="editar"><button>EDITAR</button></td>
+                    <td class="eliminar"><button>ELIMINAR</button></td>
+                </tr>`;
+            } );
+            confirmacionEliminar( );
+            editar( );
+        } );
+    }
+
+    let listadoTurnos = document.querySelector('#listado-turnos');
+    let btnSemana = document.querySelector('#btn-semana');
+    btnSemana.addEventListener('click', function (event) {
+        obtenerSemanal();
+        listadoTurnos.style.display = "none";
+        tablaSemanal.style.display = "block";
+    } );
 
     let agregar = function( ) {
         const formulario = document.querySelector('#agregar');

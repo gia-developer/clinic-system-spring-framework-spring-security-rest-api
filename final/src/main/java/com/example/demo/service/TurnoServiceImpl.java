@@ -38,10 +38,21 @@ public class TurnoServiceImpl implements IModelService<TurnoDTO> {
     public Collection<TurnoDTO> buscarTodos() {
         List<Turno> turnos = turnoRepository.findAll();
         Set<TurnoDTO> turnoDTOS = new HashSet<>();
-        for(Turno turno : turnos) {
+        for (Turno turno : turnos) {
             turnoDTOS.add(mapper.convertValue(turno, TurnoDTO.class));
         }
         return turnoDTOS;
+    }
+
+    public Collection<TurnoDTO> filtrar() {
+        List<Turno> turnos = turnoRepository.findAll();
+        Set<TurnoDTO> turnoDTOSFilter = new HashSet<>();
+        for (Turno turno : turnos) {
+            if (LocalDateTime.now().getDayOfMonth() + 7 >= turno.getFecha().getDayOfMonth()) {
+                turnoDTOSFilter.add(mapper.convertValue(turno, TurnoDTO.class));
+            }
+        }
+        return turnoDTOSFilter;
     }
 
     @Override
