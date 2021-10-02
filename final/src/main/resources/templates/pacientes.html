@@ -46,19 +46,20 @@
         </div>
     </header>
     <main class="alta">
-        <section>
+        <section id="agregar">
             <h2>Dar de alta a un paciente</h2>
-            <form id="agregar">
+            <p class="error none">El paciente no se pudo agregar debido a un error. Verifique haber completado los campos requeridos.</p>
+            <form>
                 <label for="nombre">
-                    <span>Nombre</span>
+                    <span>Nombre*</span>
                     <input type="text" name="nombre" id="nombre" />
                 </label>
                 <label for="apellido">
-                    <span>Apellido</span>
+                    <span>Apellido*</span>
                     <input type="text" name="apellido" id="apellido" />
                 </label>
                 <label for="dni">
-                    <span>DNI</span>
+                    <span>DNI*</span>
                     <input type="number" name="dni" id="dni" />
                 </label>
                 <label for="domicilio">
@@ -66,7 +67,7 @@
                     <input type="text" name="domicilio" id="domicilio" />
                 </label>
                 <label for="fechaDeAlta">
-                    <span>Fecha de alta</span>
+                    <span>Fecha de alta* (menor o igual a la fecha actual)</span>
                     <input type="date" name="fechaDeAlta" id="fechaDeAlta" />
                 </label>
                 <input type="submit" class="enviar" value="Agregar" />
@@ -90,23 +91,24 @@
                 <tbody id="info"></tbody>
             </table>
         </section>
-        <section id="modificar">
+        <section id="modificar" class="none">
             <h3>Modificar paciente</h3>
+            <p class="error none">El paciente no se pudo modificar debido a un error. Verifique haber completado los campos requeridos.</p>
             <form>
                 <label for="id_modificar">
                     <span>ID</span>
                     <input type="number" name="id" id="id_modificar" disabled />
                 </label>
                 <label for="nombre_modificar">
-                    <span>Nombre</span>
+                    <span>Nombre*</span>
                     <input type="text" name="nombre" id="nombre_modificar" />
                 </label>
                 <label for="apellido_modificar">
-                    <span>Apellido</span>
+                    <span>Apellido*</span>
                     <input type="text" name="apellido" id="apellido_modificar" />
                 </label>
                 <label for="dni_modificar">
-                    <span>DNI</span>
+                    <span>DNI*</span>
                     <input type="number" name="dni" id="dni_modificar" />
                 </label>
                 <label for="domicilio_modificar">
@@ -114,7 +116,7 @@
                     <input type="text" name="domicilio" id="domicilio_modificar" />
                 </label>
                 <label for="fechaDeAlta_modificar">
-                    <span>Fecha de alta</span>
+                    <span>Fecha de alta* (menor o igual a la fecha actual)</span>
                     <input type="date" name="fechaDeAlta" id="fechaDeAlta_modificar" />
                 </label>
                 <input type="submit" class="enviar" value="Modificar" />

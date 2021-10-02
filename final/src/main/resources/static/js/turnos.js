@@ -73,7 +73,7 @@ window.addEventListener('load', function () {
     } );
 
     let agregar = function( ) {
-        const formulario = document.querySelector('#agregar');
+        const formulario = document.querySelector('#agregar form');
         formulario.addEventListener('submit', function (event) {
             event.preventDefault();
             const formData = {
@@ -82,21 +82,28 @@ window.addEventListener('load', function () {
                 fecha: document.querySelector('#fecha').value + " " + document.querySelector('#hora').value,
             };
 
-            const url = '/turnos';
-            const settings = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            }
+            const modalError = document.querySelector('#agregar .error');
+            if(formData.paciente.id == "" || formData.odontologo.id == "" || document.querySelector('#fecha').value == "" || document.querySelector('#hora').value == "") {
+                modalError.classList.remove("none");
+            } else {
+                modalError.classList.add("none");
+                
+                const url = '/turnos';
+                const settings = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                }
 
-            fetch(url, settings)
-            .then(response => {
-                response.json();
-                obtener();
-                resetUploadForm();
-            })
+                fetch(url, settings)
+                .then(response => {
+                    response.json();
+                    obtener();
+                    resetUploadForm();
+                } );
+            }
         } );
     }
     agregar();
@@ -132,14 +139,12 @@ window.addEventListener('load', function () {
         } )
     }
 
-    let modificar = document.querySelector('#modificar');
-    modificar.style.display = "none";
-
     let editar = function( ) {
+        let modificar = document.querySelector('#modificar');
         let btnModificar = document.querySelectorAll('.editar');
         for(let i = 0; i < btnModificar.length; i++) {
             btnModificar[i].addEventListener("click", function() {
-                modificar.style.display = "block";
+                modificar.classList.remove("none")
                 document.querySelector('#id_modificar').value = this.parentNode.querySelector('.id').innerHTML;
                 document.querySelector('#paciente_modificar').value = this.parentNode.querySelector('.paciente').innerHTML;
                 document.querySelector('#odontologo_modificar').value = this.parentNode.querySelector('.odontologo').innerHTML;
@@ -157,22 +162,29 @@ window.addEventListener('load', function () {
                 odontologo: { id: document.querySelector('#odontologo_modificar').value },
                 fecha: document.querySelector('#fecha_modificar').value + " " + document.querySelector('#hora_modificar').value
             };
+
+            const modalError = document.querySelector('#modificar .error');
+            if(formData.paciente.id == "" || formData.odontologo.id == "" || document.querySelector('#fecha_modificar').value == "" || document.querySelector('#hora_modificar').value == "") {
+                modalError.classList.remove("none");
+            } else {
+                modalError.classList.add("none");
+                modificar.classList.add("none");
             
-            const url = '/turnos/actualizar/';
-            const settings = {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
+                const url = '/turnos/actualizar/';
+                const settings = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                }
+                fetch(url,settings)
+                .then(response => { 
+                    response.json();
+                    obtener();
+                    resetUploadForm();
+                } );
             }
-            fetch(url,settings)
-            .then(response => { 
-                response.json();
-                obtener();
-                resetUploadForm();
-                modificar.style.display = "none";
-            } )
         } )
     }
 } );

@@ -31,7 +31,11 @@ public class TurnoServiceImpl implements IModelService<TurnoDTO> {
     @Override
     public void crear(TurnoDTO turnoDTO) {
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
-        if( turno.getFecha().isAfter(LocalDateTime.now()) ) turnoRepository.save(turno);
+        if(turno.getPaciente().equals("") && turno.getOdontologo().equals("") && turno.getFecha().equals("")) {
+            System.out.println("No se pudo agregar");
+        } else {
+            if( turno.getFecha().isAfter(LocalDateTime.now()) ) turnoRepository.save(turno);
+        }
     }
 
     @Override
@@ -68,7 +72,11 @@ public class TurnoServiceImpl implements IModelService<TurnoDTO> {
     @Override
     public void actualizar(TurnoDTO turnoDTO) {
         Turno turno = mapper.convertValue(turnoDTO, Turno.class);
-        turnoRepository.save(turno);
+        if(turno.getPaciente().equals("") && turno.getOdontologo().equals("") && turno.getFecha().equals("")) {
+            System.out.println("No se pudo agregar");
+        } else {
+            if( turno.getFecha().isAfter(LocalDateTime.now()) ) turnoRepository.save(turno);
+        }
     }
 
     @Override

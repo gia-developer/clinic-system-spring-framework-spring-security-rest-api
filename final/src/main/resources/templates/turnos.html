@@ -46,23 +46,24 @@
         </div>
     </header>
     <main class="alta">
-        <section>
+        <section id="agregar">
             <h2>Sacar turno</h2>
-            <form id="agregar">
+            <p class="error none">El turno no se pudo agregar debido a un error. Verifique haber completado los campos requeridos.</p>
+            <form>
                 <label for="paciente">
-                    <span>Paciente</span>
+                    <span>ID Paciente*</span>
                     <input type="number" name="paciente" id="paciente" />
                 </label>
                 <label for="odontologo">
-                    <span>Odontólogo</span>
+                    <span>ID Odontólogo*</span>
                     <input type="number" name="odontologo" id="odontologo" />
                 </label>
                 <label for="fecha">
-                    <span>Fecha</span>
+                    <span>Fecha*</span>
                     <input type="date" name="fecha" id="fecha" />
                 </label>
                 <label for="hora">
-                    <span>Hora</span>
+                    <span>Hora*</span>
                     <input type="time" name="hora" id="hora" />
                 </label>
                 <input type="submit" class="enviar" value="Agregar" />
@@ -108,27 +109,28 @@
                 <tbody id="infoSemanal"></tbody>
             </table>
         </section>
-        <section id="modificar">
+        <section id="modificar" class="none">
             <h3>Modificar paciente</h3>
+            <p class="error none">El turno no se pudo modificar debido a un error. Verifique haber completado los campos requeridos.</p>
             <form>
                 <label for="id_modificar">
                     <span>ID</span>
                     <input type="number" name="id" id="id_modificar" disabled />
                 </label>
                 <label for="paciente_modificar">
-                    <span>Paciente</span>
+                    <span>ID Paciente*</span>
                     <input type="number" name="paciente" id="paciente_modificar" />
                 </label>
                 <label for="odontologo_modificar">
-                    <span>Odontólogo</span>
+                    <span>ID Odontólogo*</span>
                     <input type="number" name="odontologo" id="odontologo_modificar" />
                 </label>
                 <label for="fecha_modificar">
-                    <span>Fecha</span>
+                    <span>Fecha*</span>
                     <input type="date" name="fecha" id="fecha_modificar" />
                 </label>
                 <label for="hora_modificar">
-                    <span>Hora</span>
+                    <span>Hora*</span>
                     <input type="time" name="hora" id="hora_modificar" />
                 </label>
                 <input type="submit" class="enviar" value="Modificar" />

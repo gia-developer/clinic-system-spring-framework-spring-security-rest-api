@@ -26,8 +26,10 @@ public class PacienteServiceImpl implements IModelService<PacienteDTO> {
     @Override
     public void crear(PacienteDTO pacienteDTO) {
         Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
-        if( paciente.getFechaDeAlta().isBefore(LocalDate.now()) || paciente.getFechaDeAlta().equals(LocalDate.now()) ) {
-            pacienteRepository.save(paciente);
+        if(paciente.getFechaDeAlta() != null && paciente.getNombre() != "" && paciente.getApellido() != "") {
+            if( paciente.getFechaDeAlta().isBefore(LocalDate.now()) || paciente.getFechaDeAlta().equals(LocalDate.now()) ) {
+                pacienteRepository.save(paciente);
+            }
         }
     }
 
@@ -54,7 +56,11 @@ public class PacienteServiceImpl implements IModelService<PacienteDTO> {
     @Override
     public void actualizar(PacienteDTO pacienteDTO){
         Paciente paciente = mapper.convertValue(pacienteDTO, Paciente.class);
-        pacienteRepository.save(paciente);
+        if(paciente.getFechaDeAlta() != null && paciente.getNombre() != "" && paciente.getApellido() != "") {
+            if( paciente.getFechaDeAlta().isBefore(LocalDate.now()) || paciente.getFechaDeAlta().equals(LocalDate.now()) ) {
+                pacienteRepository.save(paciente);
+            }
+        }
     }
 
     @Override

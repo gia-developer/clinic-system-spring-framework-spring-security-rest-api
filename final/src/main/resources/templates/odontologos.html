@@ -46,19 +46,20 @@
         </div>
     </header>
     <main class="alta">
-        <section>
+        <section id="agregar">
             <h2>Dar de alta a un odontólogo</h2>
-            <form id="agregar">
+            <p class="error none">El odontólogo no se pudo agregar debido a un error. Verifique haber completado los campos requeridos.</p>
+            <form>
                 <label for="matricula">
-                    <span>Matrícula</span>
+                    <span>Matrícula*</span>
                     <input type="text" name="matricula" id="matricula" />
                 </label>
                 <label for="nombre">
-                    <span>Nombre</span>
+                    <span>Nombre*</span>
                     <input type="text" name="nombre" id="nombre" />
                 </label>
                 <label for="apellido">
-                    <span>Apellido</span>
+                    <span>Apellido*</span>
                     <input type="text" name="apellido" id="apellido" />
                 </label>
                 <input type="submit" class="enviar" value="Agregar" />
@@ -80,8 +81,9 @@
                 <tbody id="info"></tbody>
             </table>
         </section>
-        <section id="modificar">
+        <section id="modificar" class="none">
             <h3>Modificar odontólogo</h3>
+            <p class="error none">El odontólogo no se pudo modificar debido a un error. Verifique haber completado los cmapos requeridos.</p>
             <form>
                 <label for="id_modificar">
                     <span>ID</span>

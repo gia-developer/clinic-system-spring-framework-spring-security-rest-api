@@ -76,6 +76,14 @@ button:hover, .enviar:hover {
     display: none;
 }
 
+.error {
+    background: indianred;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
 form {
     display: flex;
     flex-wrap: wrap;

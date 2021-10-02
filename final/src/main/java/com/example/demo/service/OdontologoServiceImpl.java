@@ -26,6 +26,7 @@ public class OdontologoServiceImpl implements IModelService<OdontologoDTO> {
     @Override
     public void crear(OdontologoDTO odontologoDTO) {
         Odontologo odontologo1 = mapper.convertValue(odontologoDTO, Odontologo.class);
+        if(odontologo1.getMatricula() != "" && odontologo1.getNombre() != "" && odontologo1.getApellido() != "")
         odontologoRepository.save(odontologo1);
     }
 
@@ -62,6 +63,7 @@ public class OdontologoServiceImpl implements IModelService<OdontologoDTO> {
     @Override
     public void actualizar(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO, Odontologo.class);
+        if(odontologo.getMatricula() != "" && odontologo.getNombre() != "" && odontologo.getApellido() != "")
         odontologoRepository.save(odontologo);
     }
 
